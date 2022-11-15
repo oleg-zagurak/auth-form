@@ -16,6 +16,13 @@ export const BLOGS: Array<Blog> = [
         userName: 'Luci',
     },
     {
+        data: new Date('2022-10-17T00:37').getTime(),
+        theme: 'System info',
+        text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui, ipsum? Temporibus ipsum magnam dolorum sint debitis eaque esse veniam deserunt quos magni, quia, inventore, tempora quibusdam maxime quas? Autem, nostrum?',
+        id: 0,
+        userName: 'admin',
+    },
+    {
         data: new Date('2022-10-15T11:05').getTime(),
         theme: 'Angular Routing',
         text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui, ipsum? Temporibus ipsum magnam dolorum sint debitis eaque esse veniam deserunt quos magni, quia, inventore, tempora quibusdam maxime quas? Autem, nostrum?',

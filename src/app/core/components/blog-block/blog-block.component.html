@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="header">
+        <span>Усі дописи</span>
+        <app-tool-btn class="remove-all-btn" *ngIf="isAdmin"
+        (click)="confirmDeletingAll()" [disable]="blogs.length > 0 ? false : true">Видалити все</app-tool-btn>
+    </div>
+    <div class="blogs">
+        <div class="blog-item" *ngFor="let blog of blogs; let i = index">
+            <div class="title">{{ blog.theme}}</div>
+            <div class="date">Добавлено користувачем <span class="user-name">{{ blog.userName }}</span> о {{ parseDate(blog.data) }}</div>
+            <div class="btn-block">
+                <app-tool-btn class="tool-btn" *ngIf="blog.userName === userName" (click)="editBlog(i)">
+                    Редагувати</app-tool-btn>
+                <app-tool-btn class="tool-btn" *ngIf="isAdmin" (click)="confirmDeleting(i)">Видалити</app-tool-btn>
+            </div>
+        </div>
+    </div>
+</div>
+<app-editable-modal *ngIf="editModalState" [editableBlogData]="currentEditableBlog"
+    (cancelEditWindow)="closeEditModal($event)"></app-editable-modal>
+<app-confirm-modal *ngIf="confirmModalState" (closeConfirmModal)="closeConfirmModal($event)">{{confirmModalText}}</app-confirm-modal>

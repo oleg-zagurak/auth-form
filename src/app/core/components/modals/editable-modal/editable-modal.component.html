@@ -1,0 +1,12 @@
+<div class="wrapper">
+    <div class="container">
+        <input type="text" name="theme" class="theme" #theme [value]="themeValue"
+    (input)="enableBtn(theme.value, text.value)"
+    placeholder="Тема допису">
+    <textarea name="text" class="text" #text [value]="textValue"
+    (input)="enableBtn(theme.value, text.value)"
+    placeholder="Текст допису"></textarea>
+    <app-tool-btn [disable]="enable" (click)="editBlog(theme.value, text.value)">Редагувати</app-tool-btn>
+    <app-tool-btn class="cancel" (click)="cancel()">Скасувати</app-tool-btn>
+    </div>
+</div>

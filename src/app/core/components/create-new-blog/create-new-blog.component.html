@@ -1,0 +1,9 @@
+<div class="container">
+    <input type="text" name="theme" class="theme" #theme
+    (input)="enableBtn(theme.value, text.value)"
+    placeholder="Тема допису">
+    <textarea name="text" class="text" #text
+    (input)="enableBtn(theme.value, text.value)"
+    placeholder="Текст допису"></textarea>
+    <app-universal-btn [disable]="enable" (click)="addNewBlog(theme, text)">Розмістити</app-universal-btn>
+</div>

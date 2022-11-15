@@ -1,0 +1,22 @@
+<div class="container">
+    <form class="form" #logIn="ngForm" #form>
+        <div class="login raw">
+            <p>Логін</p>
+            <input type="text" #log name="login" placeholder="Введіть логін"
+                [class.wrong]="logField || logField && status" (blur)="changeFieldStatus(log)" ngModel="{{log.value}}">
+            <span class="error" *ngIf="status">*Неправильний логін або пароль</span>
+            <span class="error" *ngIf="logField && !status">*Поле обов'язкове</span>
+        </div>
+        <div class="pass raw">
+            <p>Пароль</p>
+            <input type="password" #pass name="password" placeholder="Введіть пароль"
+                [class.wrong]="passField || passField && status" (blur)="changeFieldStatus(pass)"
+                ngModel="{{pass.value}}">
+            <span class="error" *ngIf="passField && !status">*Поле обов'язкове</span>
+        </div>
+        <app-universal-btn (click)="autorization(logIn.value, form);">Ввійти</app-universal-btn>
+        <div class="link">
+            <span (click)="close()">Зареєструватися</span>
+        </div>
+    </form>
+</div>

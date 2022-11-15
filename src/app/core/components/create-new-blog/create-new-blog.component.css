@@ -1,0 +1,32 @@
+.container {
+  max-width: 1064px;
+  min-width: 250px;
+  padding: 32px;
+  margin: 0 auto;
+}
+
+textarea{
+    height: 150px;
+    resize: none;
+}
+
+input,
+textarea {
+  border-radius: 5px;
+  border-width: 1px;
+  width: 100%;
+  margin-bottom: 25px;
+  padding: 10px;
+}
+
+input:hover,
+textarea:hover {
+  border-color: rgb(77, 77, 77);
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: 0px 0px 3px 3px rgba(175, 90, 255, 0.651);
+  border-color: rgb(138, 43, 226);
+  outline: none;
+}

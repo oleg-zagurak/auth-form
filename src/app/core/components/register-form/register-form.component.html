@@ -1,0 +1,77 @@
+<div class="container">
+    <form class="form" #register="ngForm" #form>
+        <div class=" raw">
+            <p>Ім'я</p>
+            <div class="quiz" *ngIf="quiz['name']">Ім'я повинно містити лише EN. Від 3 до 20 символів</div>
+            <input #name data-empty="" data-invalid="" class="input" type="text" name="name" placeholder="Введіть Ім'я"
+                ngModel [class.wrong]="name.dataset['empty'] || name.dataset['invalid']" (input)="setQuiz(name)"
+                (focus)="setQuiz(name)" (blur)="setQuiz(name, true)">
+            <span class="error" *ngIf="name.dataset['invalid']">*Поле заповнено некоректно</span>
+            <span class="error" *ngIf="name.dataset['empty']">*Поле обов'язкове</span>
+        </div>
+        <div class=" raw">
+            <p>Прізвище</p>
+            <div class="quiz" *ngIf="quiz['surname']">Прізвище повинно містити лише EN. Від 3 до 20 символів</div>
+            <input data-empty="" data-invalid="" #surname class="input" type="text" name="surname"
+                placeholder="Введіть прізвище" ngModel
+                [class.wrong]="surname.dataset['empty'] || surname.dataset['invalid']" (input)="setQuiz(surname)"
+                (focus)="setQuiz(surname)" (blur)="setQuiz(surname, true)">
+            <span class="error" *ngIf="surname.dataset['invalid']">*Поле заповнено некоректно</span>
+            <span class="error" *ngIf="surname.dataset['empty']">*Поле обов'язкове</span>
+        </div>
+        <div class="login raw">
+            <p>Логін</p>
+            <div class="quiz" *ngIf="quiz['login']">Логін повинен містити лише EN. Від 3 до 20 символів</div>
+            <input data-empty="" data-invalid="" #login class="input" type="text" name="login"
+                placeholder="Введіть логін" ngModel
+                [class.wrong]="login.dataset['empty'] || login.dataset['invalid'] || loginTwin" (input)="setQuiz(login)"
+                (focus)="setQuiz(login)" (blur)="setQuiz(login, true)">
+            <span class="error" *ngIf="login.dataset['invalid']">*Поле заповнено некоректно</span>
+            <span class="error" *ngIf="login.dataset['empty']">*Поле обов'язкове</span>
+            <span class="error" *ngIf="loginTwin">*Користувач з таким логіном вже існує</span>
+        </div>
+        <div class="pass raw">
+            <div class="quiz" *ngIf="quiz['password']">Пароль повинен містити: хоч одну цифру, велику букву, малу букву,
+                лише
+                EN. Від 3 до 20 символів</div>
+            <p>Пароль</p>
+            <input data-empty="" data-invalid="" class="input" type="password" #pass1 name="password"
+                placeholder="Введіть пароль" ngModel (input)="setQuiz(pass1)" (focus)="setQuiz(pass1)"
+                (blur)="setQuiz(pass1, true)" [class.wrong]="pass1.dataset['empty'] || pass1.dataset['invalid']"
+                (input)="pswdConfirm(pass1.value, pass2.value)">
+            <span class="error" *ngIf="pass1.dataset['invalid']">*Поле заповнено некоректно</span>
+            <span class="error" *ngIf="pass1.dataset['empty']">*Поле обов'язкове</span>
+        </div>
+        <div class="pass raw">
+            <p>Підтвердіть пароль</p>
+            <input data-empty="" data-invalid="" class="input" type="password" #pass2 name="password2"
+                placeholder="Підтвердіть пароль" [class.wrong]="pass2.dataset['empty'] || pass2.dataset['invalid']"
+                (input)="pswdConfirm(pass1.value, pass2.value)">
+            <span class="error" *ngIf="pass2.dataset['empty'] && !passwordCopy && !pass2.value">*Поле обов'язкове</span>
+            <span class="error" *ngIf="passwordCopy">*Паролі неспівпадають</span>
+        </div>
+        <div class="raw">
+            <p>Електронна адреса</p>
+            <input data-invalid="" #email class="input" type="email" name="email" placeholder="Електронна адреса"
+                ngModel [class.wrong]="email.dataset['invalid']">
+            <span class="error" *ngIf="email.dataset['invalid']">*Поле заповнено некоректно</span>
+        </div>
+        <div class="raw">
+            <div class="sex">
+                <span class="item">
+                    <label for="male">Чоловік</label>
+                    <input type="radio" name="sex" id="male" value="male" ngModel="null">
+                </span>
+                <span class="item">
+                    <label for="female">Жінка</label>
+                    <input type="radio" name="sex" id="female" value="female" ngModel="null">
+                </span>
+            </div>
+
+        </div>
+        <app-universal-btn (click)="validation(form.elements, register.value)">Зареєструватися</app-universal-btn>
+        <div class="link">
+            <span (click)="close()">Ввійти</span>
+        </div>
+    </form>
+</div>

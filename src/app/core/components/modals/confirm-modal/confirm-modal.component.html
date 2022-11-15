@@ -1,0 +1,11 @@
+<div class="wrapper">
+    <div class="container">
+        <div class="header">
+            <ng-content></ng-content>
+        </div>
+        <div class="btn-block">
+            <app-tool-btn (click)="confirm()">Підтвердити</app-tool-btn>
+            <app-tool-btn (click)="cancel()">Скасувати</app-tool-btn>
+        </div>
+    </div>
+</div>
